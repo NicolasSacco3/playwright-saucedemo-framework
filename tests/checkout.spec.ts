@@ -3,13 +3,15 @@ import { loginAsStandardUser } from '../utils/loginHelper';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 
+test.beforeEach(async ({ page }) => {
+    await loginAsStandardUser(page);
+});
+
 test('Compra completa de un producto', async ({ page }) => {
 
     const inventoryPage = new InventoryPage(page);
 
     const checkoutPage = new CheckoutPage(page);
-
-    await loginAsStandardUser(page);
 
     await inventoryPage.addBackpackToCart();
 
@@ -35,8 +37,6 @@ test('Compra sin completar el nombre ', async ({ page }) => {
     const inventoryPage = new InventoryPage(page);
 
     const checkoutPage = new CheckoutPage(page);
-
-    await loginAsStandardUser(page);
 
     await inventoryPage.addBackpackToCart();
 

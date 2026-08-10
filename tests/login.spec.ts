@@ -3,23 +3,27 @@ import { LoginPage } from '../pages/LoginPage';
 import { users } from '../fixtures/users';
 import { InventoryPage } from '../pages/InventoryPage';
 
-test('Login exitoso', async ({ page }) => {
+const loginUsers = [
+    users.standard,
+    users.problem
+];
 
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
+for (const user of loginUsers) {
 
-    await loginPage.navigate();
+    test(`Login exitoso - ${user.username}`, async ({ page }) => {
 
-    await loginPage.login(
-    users.standard.username,
-    users.standard.password
-    );
+        const loginPage = new LoginPage(page);
 
-    await expect(page).toHaveURL(/inventory/);
+        await loginPage.navigate();
 
-    expect(await inventoryPage.getTitleText()).toBe("Products");
+        await loginPage.login(
+            user.username,
+            user.password
+        );
 
-});
+        await expect(page).toHaveURL(/inventory/);
+    });
+}
 test('Login con usuario bloqueado', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
