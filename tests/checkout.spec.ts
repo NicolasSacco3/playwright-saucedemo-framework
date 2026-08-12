@@ -7,7 +7,11 @@ test.beforeEach(async ({ page }) => {
     await loginAsStandardUser(page);
 });
 
-test('Compra completa de un producto', async ({ page }) => {
+test('Compra completa de un producto',
+    {
+        tag: '@regression'
+    },
+    async ({ page }) => {
 
     const inventoryPage = new InventoryPage(page);
 
@@ -32,7 +36,11 @@ test('Compra completa de un producto', async ({ page }) => {
     ).toHaveText('Thank you for your order!');
 
 });
-test('Compra sin completar el nombre ', async ({ page }) => {
+test('Compra sin completar el nombre ',
+    {
+        tag: '@regression'
+    },
+    async ({ page }) => {
 
     const inventoryPage = new InventoryPage(page);
 
