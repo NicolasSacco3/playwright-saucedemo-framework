@@ -10,7 +10,12 @@ const loginUsers = [
 
 for (const user of loginUsers) {
 
-    test(`Login exitoso - ${user.username}`, async ({ page }) => {
+    test(`Login exitoso - ${user.username}`,   
+        {
+        tag: '@smoke'
+        },
+        
+        async ({ page }) => {
 
         const loginPage = new LoginPage(page);
 
