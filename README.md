@@ -37,6 +37,7 @@ También utiliza:
 
 ## 📂 Estructura del proyecto
 
+```text
 pages/
 ├── LoginPage.ts
 ├── InventoryPage.ts
@@ -58,10 +59,4 @@ utils/
 
 .github/
 └── workflows/
-    └── playwright.yml 
-
-👨‍💻 Autor
-Nicolás Sacco
-QA Automation Junior
-LinkedIn: https://www.linkedin.com/in/nicolás-sacco-35a0452a8⁠
-GitHub: https://github.com/NicolasSacco3⁠�
+    └── playwright.yml
