@@ -1,7 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../support/fixtures';
 import { users } from '../fixtures/users';
-import { InventoryPage } from '../pages/InventoryPage';
 
 const loginUsers = [
     users.standard,
@@ -9,30 +7,25 @@ const loginUsers = [
 ];
 
 for (const user of loginUsers) {
-
-    test(`Login exitoso - ${user.username}`,   
+    test(
+        `Login exitoso - ${user.username}`,
         {
-        tag: '@smoke'
+            tag: '@smoke'
         },
-        
-        async ({ page }) => {
+        async ({ page, loginPage }) => {
+            await loginPage.navigate();
 
-        const loginPage = new LoginPage(page);
+            await loginPage.login(
+                user.username,
+                user.password
+            );
 
-        await loginPage.navigate();
-
-        await loginPage.login(
-            user.username,
-            user.password
-        );
-
-        await expect(page).toHaveURL(/inventory/);
-    });
+            await expect(page).toHaveURL(/inventory/);
+        }
+    );
 }
-test('Login con usuario bloqueado', async ({ page }) => {
 
-    const loginPage = new LoginPage(page);
-
+test('Login con usuario bloqueado', async ({ loginPage }) => {
     await loginPage.navigate();
 
     await loginPage.login(
@@ -45,5 +38,4 @@ test('Login con usuario bloqueado', async ({ page }) => {
     ).toContainText(
         'Epic sadface: Sorry, this user has been locked out.'
     );
-
 });
