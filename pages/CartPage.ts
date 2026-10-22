@@ -8,10 +8,15 @@ export class CartPage {
     readonly cartItem: Locator; 
 
     constructor(page: Page) {
-        this.page = page;
-        this.backpackName = page.locator('.inventory_item_name');
-        this.removeButton = page.locator('[data-test="remove-sauce-labs-backpack"]');
-        this.cartItem = page.locator('.cart_item');
+    this.page = page;
+    this.backpackName = page.locator(
+        '.cart_item .inventory_item_name'
+    );
+    this.removeButton = page.locator(
+        '[data-test="remove-sauce-labs-backpack"]'
+    );
+    this.cartItem = page.locator('.cart_item');
+        
     }
 
     async getProductName() {
