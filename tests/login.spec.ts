@@ -23,6 +23,7 @@ for (const user of loginUsers) {
             await expect(page).toHaveURL(/inventory/);
         }
     );
+
 }
 
 test('Login con usuario bloqueado', async ({ loginPage }) => {

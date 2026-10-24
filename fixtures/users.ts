@@ -1,3 +1,9 @@
+
+type TestUser = {
+  username: string;
+  password: string;
+};
+
 export const users = {
   standard: {
     username: 'standard_user',
@@ -13,5 +19,4 @@ export const users = {
     username: 'problem_user',
     password: 'secret_sauce'
   }
-  
-};
+} satisfies Record<string, TestUser>;
