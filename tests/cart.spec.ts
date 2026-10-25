@@ -13,7 +13,7 @@ test('Verificar producto agregado al carrito', async ({ page }) => {
 
     await inventoryPage.addBackpackToCart();
 
-    await inventoryPage.openCart();
+    await inventoryPage.header.openCart();
 
     expect(
         await cartPage.getProductName()

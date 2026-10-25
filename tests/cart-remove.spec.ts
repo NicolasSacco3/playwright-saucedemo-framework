@@ -13,7 +13,7 @@ test('Eliminar producto del carrito', async ({ page }) => {
 
     await inventoryPage.addBackpackToCart();
 
-    await inventoryPage.openCart();
+    await inventoryPage.header.openCart();
 
     await cartPage.removeBackpack();
 

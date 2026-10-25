@@ -13,6 +13,6 @@ test('Agregar un producto al carrito', async ({ page }) => {
 
     await inventoryPage.addBackpackToCart();
 
-    expect(await inventoryPage.getCartCount()).toBe("1");
+    expect(await inventoryPage.header.getCartCount()).toBe("1");
 
 });

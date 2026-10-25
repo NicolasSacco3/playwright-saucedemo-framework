@@ -19,7 +19,7 @@ test('Compra completa de un producto',
 
     await inventoryPage.addBackpackToCart();
 
-    await inventoryPage.openCart();
+    await inventoryPage.header.openCart();
 
     await checkoutPage.startCheckout();
 
@@ -48,7 +48,7 @@ test('Compra sin completar el nombre ',
 
     await inventoryPage.addBackpackToCart();
 
-    await inventoryPage.openCart();
+    await inventoryPage.header.openCart();
 
     await checkoutPage.startCheckout();
 
