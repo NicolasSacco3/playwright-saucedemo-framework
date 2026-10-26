@@ -26,7 +26,7 @@ for (const user of loginUsers) {
 
 }
 
-test('Login con usuario bloqueado', async ({ loginPage }) => {
+test('Login con usuario bloqueado', async ({ page, loginPage }) => {
     await loginPage.navigate();
 
     await loginPage.login(
@@ -34,9 +34,12 @@ test('Login con usuario bloqueado', async ({ loginPage }) => {
         users.locked.password
     );
 
-    await expect(
-        loginPage.getErrorMessage()
-    ).toContainText(
+    const errorMessage = loginPage.getErrorMessage();
+
+    await expect(errorMessage).toBeVisible();
+
+    await expect(errorMessage).toContainText(
         'Epic sadface: Sorry, this user has been locked out.'
     );
+    await expect(page).not.toHaveURL(/inventory/);
 });
