@@ -15,8 +15,7 @@ test('Verificar producto agregado al carrito', async ({ page }) => {
 
     await inventoryPage.header.openCart();
 
-    expect(
-        await cartPage.getProductName()
-    ).toBe("Sauce Labs Backpack");
+    await expect(cartPage.backpackName)
+    .toHaveText("Sauce Labs Backpack");
 
 });

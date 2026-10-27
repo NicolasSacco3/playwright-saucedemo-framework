@@ -17,8 +17,6 @@ test('Eliminar producto del carrito', async ({ page }) => {
 
     await cartPage.removeBackpack();
 
-    expect(
-        await cartPage.getCartItemsCount()
-    ).toBe(0);
+    await expect(cartPage.cartItem).toHaveCount(0);
 
 });
