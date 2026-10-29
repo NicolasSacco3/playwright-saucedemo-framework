@@ -12,16 +12,20 @@ for (const user of loginUsers) {
         {
             tag: '@smoke'
         },
-        async ({ page, loginPage }) => {
-            await loginPage.navigate();
+       async ({ page, loginPage }) => {
+        await loginPage.navigate();
 
-            await loginPage.login(
-                user.username,
-                user.password
-            );
+        await expect(loginPage.usernameInput).toHaveAttribute('placeholder', 'Username');
 
-            await expect(page).toHaveURL(/inventory/);
-        }
+        await loginPage.login(
+        user.username,
+        user.password
+    );
+
+    await expect(page).toHaveURL(
+        'https://www.saucedemo.com/inventory.html'
+    );
+}
     );
 
 }

@@ -7,6 +7,7 @@ export class InventoryPage {
     readonly title: Locator;
     readonly backpackButton: Locator;
     readonly header: HeaderComponent;
+    readonly removeBackpackButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -15,6 +16,8 @@ export class InventoryPage {
             '[data-test="add-to-cart-sauce-labs-backpack"]'
         );
         this.header = new HeaderComponent(page);
+        this.removeBackpackButton = page.locator(
+        '[data-test="remove-sauce-labs-backpack"]');
     }
 
     async getTitleText() {
