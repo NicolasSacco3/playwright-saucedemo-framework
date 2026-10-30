@@ -26,6 +26,6 @@ test('Agregar un producto al carrito', async ({ page }) => {
     await expect(inventoryPage.removeBackpackButton)
     .toBeVisible();
 
-    expect(await inventoryPage.header.getCartCount()).toBe("1");
+    await expect(inventoryPage.header.cartBadge).toHaveText('1');
 
 });
